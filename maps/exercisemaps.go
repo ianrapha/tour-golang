@@ -2,11 +2,22 @@ package main
 
 import (
     "golang.org/x/tour/wc"
+    "strings"
 )
 
-// TODO: code the solution
 func WordCount(s string) map[string]int {
-    return map[string]int{"x": 1}
+    countMap := map[string]int{}
+    arrString := strings.Fields(s)
+
+    for i := 0; i < len(arrString); i++ {
+        if ok := countMap[arrString[i]]; ok > 0 {
+            countMap[arrString[i]]++
+        } else {
+            countMap[arrString[i]] = 1
+        }
+    }
+
+    return countMap
 }
 
 func main() {
